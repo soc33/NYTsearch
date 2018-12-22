@@ -1,1 +1,16 @@
-body
+.display-4 {
+    text-align: center;
+    color: white;
+}
+.jumbotron {
+    background-color: rgb(46, 46, 216);
+}
+.inputs {
+    width: 100%;
+}
+#inputs {
+    width: 100%;
+}
+.card {
+    margin-bottom: 30px;
+}
