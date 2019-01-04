@@ -16,16 +16,11 @@ function buildQueryURL() {
         queryParams.end_date = endYear + "0101";
     };
 
-    console.log("---------------\nURL: " + queryURL + "\n---------------");
-    console.log(queryURL + $.param(queryParams));
     return queryURL + $.param(queryParams);
 };
 
 function updatePage(NYTData) {
     var numArticles = $("#numberOfRecords").val();
-    // Log the NYTData to console, where it will show up as an object
-    console.log(NYTData);
-    console.log("------------------------------------");
 
     for (var i = 0; i < numArticles; i++) {
         var article = NYTData.response.docs[i];
@@ -39,30 +34,25 @@ function updatePage(NYTData) {
         var headline = article.headline;
 
         if (headline && headline.main) {
-            console.log(headline.main);
             $articleListItem.append("<span class='label label-primary'>" + articleCount + "</span><strong> " + headline.main + "</strong>");
         };
 
         var byline = article.byline;
         if (byline && byline.original) {
-            console.log(byline.original);
             $articleListItem.append("<h5>" + byline.original + "</h5>");
         };
 
         var section = article.section_name;
-        console.log(article.section_name);
         if (section) {
             $articleListItem.append("<h5>Section: " + section + "</h5>");
         };
 
         var pubDate = article.pub_date;
-        console.log(article.pub_date);
         if (pubDate) {
             $articleListItem.append("<h5>" + article.pub_date + "</h5>");
         };
 
         $articleListItem.append("<a href='" + article.web_url + "'> " + article.web_url + "</a>");
-        console.log(article.web_url);
 
         $articleList.append($articleListItem);
     };
